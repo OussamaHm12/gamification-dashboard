@@ -5,14 +5,14 @@ import { FaTachometerAlt, FaUsers, FaMedal, FaSignOutAlt } from 'react-icons/fa'
 
 const Sidebar = () => {
   return (
-    <div className="h-screen w-64 bg-[#1E293B] text-white flex flex-col p-4">
+    <div className="h-full min-h-screen w-64 bg-sidebar text-sidebar-foreground flex flex-col p-4 border-r border-sidebar-border">
       <h1 className="text-2xl font-bold mb-8">🎮 Gamification</h1>
 
-      <nav className="flex flex-col gap-3">
+      <nav className="flex flex-col gap-3 flex-1">
         <NavLink
           to="/"
           className={({ isActive }) =>
-            `flex items-center gap-3 px-4 py-2 rounded-lg hover:bg-[#334155] ${isActive ? 'bg-[#334155]' : ''}`
+            `flex items-center gap-3 px-4 py-2 rounded-lg hover:bg-sidebar-accent/60 ${isActive ? 'bg-sidebar-accent' : ''}`
           }
         >
           <FaTachometerAlt /> Dashboard
@@ -21,7 +21,7 @@ const Sidebar = () => {
         <NavLink
           to="/defis"
           className={({ isActive }) =>
-            `flex items-center gap-3 px-4 py-2 rounded-lg hover:bg-[#334155] ${isActive ? 'bg-[#334155]' : ''}`
+            `flex items-center gap-3 px-4 py-2 rounded-lg hover:bg-sidebar-accent/60 ${isActive ? 'bg-sidebar-accent' : ''}`
           }
         >
           <FaMedal /> Défis
@@ -30,7 +30,7 @@ const Sidebar = () => {
         <NavLink
           to="/students"
           className={({ isActive }) =>
-            `flex items-center gap-3 px-4 py-2 rounded-lg hover:bg-[#334155] ${isActive ? 'bg-[#334155]' : ''}`
+            `flex items-center gap-3 px-4 py-2 rounded-lg hover:bg-sidebar-accent/60 ${isActive ? 'bg-sidebar-accent' : ''}`
           }
         >
           <FaUsers /> Utilisateurs
@@ -38,7 +38,7 @@ const Sidebar = () => {
 
         <NavLink
           to="/login"
-          className="flex items-center gap-3 px-4 py-2 mt-auto text-red-400 hover:bg-[#334155] hover:text-red-300"
+          className="flex items-center gap-3 px-4 py-2 mt-auto text-red-400 hover:bg-sidebar-accent/60 hover:text-red-300"
         >
           <FaSignOutAlt /> Déconnexion
         </NavLink>
