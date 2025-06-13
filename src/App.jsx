@@ -1,20 +1,21 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { Windmill } from '@windmill/react-ui';
 import Defis from './pages/Defis';
-import Sidebar from './components/Sidebar';
+import Dashboard from './pages/Dashboard';
+import Layout from './components/Layout';
 
 function App() {
   return (
-    <Router>
-      <div className="flex">
-        <Sidebar />
-        <div className="flex-grow p-4">
+    <Windmill>
+      <Router>
+        <Layout>
           <Routes>
+            <Route path="/" element={<Dashboard />} />
             <Route path="/defis" element={<Defis />} />
-            {/* ajoutez d'autres routes ici si besoin */}
           </Routes>
-        </div>
-      </div>
-    </Router>
+        </Layout>
+      </Router>
+    </Windmill>
   );
 }
 
