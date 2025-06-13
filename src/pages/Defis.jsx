@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { fetchDefis, createDefi, updateDefi, deleteDefi } from '../services/defiService';
-import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
-import { Dialog, DialogContent } from '@/components/ui/dialog';
+import { Button, Input, Modal, ModalHeader, ModalBody, ModalFooter } from '@windmill/react-ui';
 import { Pencil, Trash2 } from 'lucide-react';
 
 const Defis = () => {
@@ -140,12 +138,12 @@ const Defis = () => {
 
       {/* MODAL */}
       {isFormOpen && (
-        <Dialog open={isFormOpen} onOpenChange={setIsFormOpen}>
-          <DialogContent className="sm:max-w-lg">
+        <Modal isOpen={isFormOpen} onClose={() => setIsFormOpen(false)}>
+          <ModalHeader>
+            {selectedDefi ? 'Modifier le défi' : 'Créer un défi'}
+          </ModalHeader>
+          <ModalBody>
             <div className="space-y-4">
-              <h3 className="text-lg font-bold">
-                {selectedDefi ? 'Modifier le défi' : 'Créer un défi'}
-              </h3>
               <Input
                 placeholder="Titre"
                 value={formData.title}
@@ -167,17 +165,19 @@ const Defis = () => {
                 value={formData.endDate}
                 onChange={(e) => setFormData({ ...formData, endDate: e.target.value })}
               />
-              <div className="flex justify-end gap-2 pt-4">
-                <Button variant="secondary" onClick={() => setIsFormOpen(false)}>
-                  Annuler
-                </Button>
-                <Button onClick={handleSubmit}>
-                  {selectedDefi ? 'Modifier' : 'Créer'}
-                </Button>
-              </div>
             </div>
-          </DialogContent>
-        </Dialog>
+          </ModalBody>
+          <ModalFooter>
+            <div className="flex justify-end gap-2 w-full">
+              <Button layout="outline" onClick={() => setIsFormOpen(false)}>
+                Annuler
+              </Button>
+              <Button onClick={handleSubmit}>
+                {selectedDefi ? 'Modifier' : 'Créer'}
+              </Button>
+            </div>
+          </ModalFooter>
+        </Modal>
       )}
     </div>
   );
