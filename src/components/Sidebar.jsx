@@ -3,12 +3,34 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { FaTachometerAlt, FaUsers, FaMedal, FaSignOutAlt } from 'react-icons/fa';
 
-const Sidebar = () => {
+const Sidebar = ({ isOpen, toggleSidebar }) => {
   return (
-    <div className="h-full min-h-screen w-64 bg-sidebar text-sidebar-foreground flex flex-col p-4 border-r border-sidebar-border">
-      <h1 className="text-2xl font-bold mb-8">🎮 Gamification</h1>
+    <>
+      {/* Backdrop */}
+      <div
+        className={`fixed inset-0 z-20 bg-black/50 transition-opacity lg:hidden ${
+          isOpen ? 'opacity-100 visible' : 'opacity-0 invisible'
+        }`}
+        onClick={toggleSidebar}
+        aria-hidden="true"
+      />
 
-      <nav className="flex flex-col gap-3 flex-1">
+      <aside
+        className={`fixed inset-y-0 left-0 z-30 w-64 transform bg-sidebar text-sidebar-foreground flex flex-col p-4 border-r border-sidebar-border transition-transform lg:static lg:translate-x-0 ${
+          isOpen ? 'translate-x-0' : '-translate-x-full'
+        }`}
+      >
+        <button
+          className="self-end mb-4 p-2 lg:hidden"
+          onClick={toggleSidebar}
+          aria-label="Close sidebar"
+        >
+          ✕
+        </button>
+        <h1 className="text-2xl font-bold mb-8">🎮 Gamification</h1>
+
+        <nav className="flex flex-col gap-3 flex-1">
+
         <NavLink
           to="/"
           className={({ isActive }) =>
@@ -42,8 +64,9 @@ const Sidebar = () => {
         >
           <FaSignOutAlt /> Déconnexion
         </NavLink>
-      </nav>
-    </div>
+        </nav>
+      </aside>
+    </>
   );
 };
 
