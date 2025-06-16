@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+
 import Sidebar from './Sidebar';
 import Header from './Header';
 
@@ -12,6 +13,7 @@ const Layout = ({ children }) => {
       <Sidebar isOpen={isSidebarOpen} toggleSidebar={toggleSidebar} />
       <div className="flex flex-col flex-1">
         <Header toggleSidebar={toggleSidebar} />
+
         <main className="flex-1 overflow-y-auto p-4">{children}</main>
       </div>
     </div>

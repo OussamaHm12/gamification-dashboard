@@ -30,6 +30,7 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
         <h1 className="text-2xl font-bold mb-8">🎮 Gamification</h1>
 
         <nav className="flex flex-col gap-3 flex-1">
+
         <NavLink
           to="/"
           className={({ isActive }) =>

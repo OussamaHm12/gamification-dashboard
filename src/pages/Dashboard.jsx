@@ -18,6 +18,7 @@ const Dashboard = () => {
           <p className="text-2xl font-bold mt-2">7</p>
         </div>
       </div>
+
     </div>
   );
 };

@@ -21,11 +21,9 @@ const useDarkMode = () => {
 };
 
 const Header = ({ toggleSidebar }) => {
-  const [isDark, setIsDark] = useDarkMode();
 
   return (
-    <header className="flex items-center justify-between h-16 px-4 bg-white dark:bg-gray-800 border-b border-border">
-      <div className="flex items-center gap-4">
+    <header className="flex items-center justify-between h-16 px-4 bg-white dark:bg-gray-800 border-b border-border">      <div className="flex items-center gap-4">
         <button
           className="lg:hidden p-2"
           onClick={toggleSidebar}
@@ -45,6 +43,7 @@ const Header = ({ toggleSidebar }) => {
         </button>
         <Avatar size="small" src="https://i.pravatar.cc/40" alt="profile" />
       </div>
+
     </header>
   );
 };
